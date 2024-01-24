@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from '../../interfaces/pokemon';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pokemonService: PokemonService) { }
+
+  public pokemonList!: Pokemon[];
 
   ngOnInit(): void {
+    this.pokemonList = this.pokemonService.getAllPokemon();
   }
 
 }
