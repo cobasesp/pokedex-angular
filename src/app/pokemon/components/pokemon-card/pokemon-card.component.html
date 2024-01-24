@@ -1,0 +1,26 @@
+<div 
+    class="card d-flex justify-content-start flex-row mb-2" 
+    [style.background-color]="pokemon.colorTheme">
+
+    <!-- Pokemon sprite image -->
+    <img 
+        class="pokemon-art" 
+        [src]="pokemon.sprites.other?.['official-artwork']?.front_default ? pokemon.sprites.other?.['official-artwork']?.front_default : pokemon.sprites.front_default" [alt]="pokemon.name">
+    
+    <!-- Pokemon info -->
+    <div class="pokemon-info d-flex flex-column">
+
+        <!-- Name -->
+        <p>#{{ pokemon.id }} {{ pokemon.name | uppercase }}</p>
+
+        <!-- Types -->
+        <p class="d-flex flex-row justify-content-between">
+            <span 
+                class="btn btn-sm type"
+                *ngFor="let type of pokemon.types"
+            >
+                {{ type.type.name }}
+            </span>
+        </p>
+    </div> 
+</div>

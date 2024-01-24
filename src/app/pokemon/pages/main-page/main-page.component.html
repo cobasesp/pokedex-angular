@@ -1,27 +1,12 @@
 <div class="container">
 
-    <div class="row col">
+    <div class="col">
         <!-- Searchbox -->
         Searchbox
     </div>
 
-    <div class="row col">
+    <div class="col">
         <!-- Pokemon list -->
-        <div class="card d-flex justify-content-start flex-row mb-2" *ngFor="let pokemon of pokemonList" [style.background-color]="pokemon.colorTheme">
-            <img 
-                class="pokemon-art" 
-                [src]="pokemon.sprites.other?.['official-artwork']?.front_default ? pokemon.sprites.other?.['official-artwork']?.front_default : pokemon.sprites.front_default" [alt]="pokemon.name">
-            <div class="pokemon-info d-flex flex-column">
-                <p>#{{ pokemon.id }} {{ pokemon.name | uppercase }}</p>
-                <p class="d-flex flex-row justify-content-between">
-                    <span 
-                        class="btn btn-sm type"
-                        *ngFor="let type of pokemon.types"
-                    >
-                        {{ type.type.name }}
-                    </span>
-                </p>
-            </div> 
-        </div>
+        <pokemon-card *ngFor="let pokemon of pokemonList" [pokemon]="pokemon"></pokemon-card>
     </div>
 </div>
