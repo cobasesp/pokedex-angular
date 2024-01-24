@@ -7,10 +7,21 @@
 
     <div class="row col">
         <!-- Pokemon list -->
-        <ul>
-            <li *ngFor="let pokemon of pokemonList">
-                #{{ pokemon.id }} {{ pokemon.name }}
-            </li>
-        </ul>
+        <div class="card d-flex justify-content-start flex-row mb-2" *ngFor="let pokemon of pokemonList" [style.background-color]="pokemon.colorTheme">
+            <img 
+                class="pokemon-art" 
+                [src]="pokemon.sprites.other?.['official-artwork']?.front_default ? pokemon.sprites.other?.['official-artwork']?.front_default : pokemon.sprites.front_default" [alt]="pokemon.name">
+            <div class="pokemon-info d-flex flex-column">
+                <p>#{{ pokemon.id }} {{ pokemon.name | uppercase }}</p>
+                <p class="d-flex flex-row justify-content-between">
+                    <span 
+                        class="btn btn-sm type"
+                        *ngFor="let type of pokemon.types"
+                    >
+                        {{ type.type.name }}
+                    </span>
+                </p>
+            </div> 
+        </div>
     </div>
 </div>

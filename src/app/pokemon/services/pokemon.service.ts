@@ -23,7 +23,10 @@ export class PokemonService {
             .subscribe( result => {
                 result.results.forEach(pokemon => {
                     this.getPokemonInfoByName(pokemon.name)
-                        .subscribe( p => pokemonList.push(p))
+                        .subscribe( p => {
+                            p.colorTheme = this.injectPokemonColorTheme(p.types[0].type.name)
+                            pokemonList.push(p)
+                        })
                 });
             })
 
@@ -39,5 +42,27 @@ export class PokemonService {
     getPokemonInfoByName( name: string): Observable<Pokemon> {
         console.log(`Get ${name} info`);
         return this.http.get<Pokemon>(`${this.pokemonApi}/${name}`);
+    }
+
+    /**
+     * Get the type of the pokemon and return a color theme
+     * 
+     * @param type 
+     */
+    injectPokemonColorTheme( type: string): string {
+        if(type == 'grass') return '#cff6c8';
+        if(type == 'fire') return '#ed5c53';
+        if(type == 'poison') return '#d884f4';
+        if(type == 'ghost') return '#b186f1';
+        if(type == 'rock') return '#c5c6c8';
+        if(type == 'ground') return '#ffda9e';
+        if(type == 'water') return '#84b6f4';
+        if(type == 'bug') return '#cbcd69';
+        if(type == 'normal') return '#fffee1';
+        if(type == 'flying') return '#dceafc';
+        if(type == 'electric') return '#ffd700';
+
+        // Return a default color
+        return '#cfcecf' 
     }
 }

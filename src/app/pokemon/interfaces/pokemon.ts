@@ -20,6 +20,8 @@ export interface Pokemon {
     stats:                    Stat[];
     types:                    Type[];
     weight:                   number;
+    colorTheme:               string;
+    artWork:                  string;
 }
 
 export interface Ability {
