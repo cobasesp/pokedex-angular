@@ -1,10 +1,22 @@
 #searchPokemonInput {
     position: block;
     z-index: 9999;   
+    font-size: 20px;
+    box-shadow: none !important;
+}
+div.fixed-top > #searchPokemonInput {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0px 5px 10px !important;
 }
 
-div.sticky {
-    position: fixed;
-    top: 10px;
-    z-index: 9999;
+div.fixed-top > #searchPokemonInput.blur {
+    opacity: 0.6;
+    box-shadow: none !important;
 }
+
+/* Fix for container if not sticky */
+div:not(.fixed-top) {
+    padding: 0;
+}
+
