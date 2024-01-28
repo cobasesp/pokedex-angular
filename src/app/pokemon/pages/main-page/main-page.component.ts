@@ -12,9 +12,15 @@ export class MainPageComponent implements OnInit {
   constructor(private pokemonService: PokemonService) { }
 
   public pokemonList!: Pokemon[];
+  public filterBy: string = '';
 
   ngOnInit(): void {
     this.pokemonList = this.pokemonService.getAllPokemon();
+  }
+
+  filterPokemonsByName(name: string): void {
+    console.log(`Filtering pokemons by: ${name}`);
+    this.filterBy = name;
   }
 
 }

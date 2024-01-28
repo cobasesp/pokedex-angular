@@ -2,11 +2,18 @@
 
     <div class="col">
         <!-- Searchbox -->
-        Searchbox
+        <search-box (pokemonNameValue)="filterPokemonsByName($event)"></search-box>
     </div>
 
     <div class="col">
         <!-- Pokemon list -->
-        <pokemon-card *ngFor="let pokemon of pokemonList" [pokemon]="pokemon"></pokemon-card>
+        <ng-container *ngFor="let pokemon of pokemonList" >
+            <pokemon-card 
+                *ngIf="pokemon.name.indexOf(filterBy) > -1"
+                [pokemon]="pokemon"
+            >
+            </pokemon-card>
+        </ng-container>
+        
     </div>
 </div>
